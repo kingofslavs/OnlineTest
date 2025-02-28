@@ -32,7 +32,17 @@
             <label for="password_confirmation">Подтверждение пароля</label>
             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
         </div>
+        <div class="form-group row mb-3">
+            <div class="col-md-6 offset-md-4">
+                <div class="h-captcha" data-sitekey="{{ config('services.hcaptcha.sitekey') }}"></div>
+
+                @error('h-captcha-response')
+                    <div class="error">Капча должна быть пройдена</div>
+                @enderror
+            </div>
+        </div>
         <button type="submit" class="btn btn-register">Зарегистрироваться</button>
     </form>
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </div>
 @endsection

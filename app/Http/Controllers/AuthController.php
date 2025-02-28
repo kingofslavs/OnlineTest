@@ -15,6 +15,7 @@ class AuthController extends Controller
             'name' => 'required|string|max:255|unique:users',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|confirmed',
+            'h-captcha-response' => 'required|hcaptcha',
         ]);
 
         $user = User::create([
@@ -32,9 +33,15 @@ class AuthController extends Controller
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required',
+            'h-captcha-response' => 'required|hcaptcha',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        $loginCredentials = [
+            'email' => $credentials['email'],
+            'password' => $credentials['password'],
+        ];
+
+        if (Auth::attempt($loginCredentials)) {
             $request->session()->regenerate();
             return redirect()->intended(route('home'));
         }

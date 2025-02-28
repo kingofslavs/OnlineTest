@@ -3,9 +3,6 @@
 @section('title', 'Админ панель')
 
 @section('content')
-    <div class="container-admin">
-        <h1 style="text-align: center">Админ панель</h1>
-    </div>
     <div class="container">
         <h2>Доступные тесты</h2>
         @foreach($tests as $test)

@@ -12,7 +12,7 @@
 <body>
     <header class="header">
         <div class="header__logo">
-            <a href="{{ route('home') }}">Online Tests</a>
+            <a href="{{ route('home') }}">SmartQuiz</a>
         </div>
         <button class="mobile-menu-button">
             <i class="fas fa-bars"></i>
@@ -40,7 +40,7 @@
         @yield('content')
     </main>
     <footer>
-        <p>&copy; 2025 Online Tests</p>
+        <p>&copy; 2025 SmartQuiz</p>
     </footer>
     <script>
         const menuButton = document.querySelector('.mobile-menu-button');

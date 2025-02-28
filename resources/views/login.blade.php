@@ -21,7 +21,17 @@
                 <div class="error">{{ $message }}</div>
             @enderror
         </div>
+        <div class="form-group row mb-3">
+            <div class="col-md-6 offset-md-4">
+                <div class="h-captcha" data-sitekey="{{ config('services.hcaptcha.sitekey') }}"></div>
+
+                @error('h-captcha-response')
+                    <div class="error">Капча должна быть пройдена</div>
+                @enderror
+            </div>
+        </div>
         <button type="submit" class="btn btn-login">Войти</button>
     </form>
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </div>
 @endsection
