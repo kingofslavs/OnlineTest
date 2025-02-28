@@ -1,0 +1,67 @@
+:root {
+    --background: linear-gradient(90deg, rgba(18,18,18,1) 0%, rgba(32,32,32,1) 100%);
+    --text: #E0E0E0;
+    --primary: #A70000;
+    --secondary: #850000;
+    --accent: #FF5252;
+    --additional: #2C2C2C;
+    --header-footer: #1E1E1E;
+    --card-background: #212121;
+}
+
+.input-group-append {
+    display: inline-block;
+}
+
+.card.mb-5 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 4vh;
+}
+
+.card-body-search {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    background: var(--card-background);
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+h3.card-title {
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: clamp(1.5rem, 1.396rem + 0.442vw, 1.75rem);
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+input.form-control {
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 2px solid #E2E8F0;
+    width: 100%;
+    font-size: 16px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.25);
+}
+
+.btn-search {
+    padding: 12px;
+    height: 48px;
+    width: 48px;
+    border-radius: 8px;
+}
