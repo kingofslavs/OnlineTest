@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Http;
 
 class HCaptchaServiceProvider extends ServiceProvider
 {
@@ -18,21 +19,16 @@ class HCaptchaServiceProvider extends ServiceProvider
     /**
      * Bootstrap services.
      */
-    public function boot()
+    public function boot(): void
     {
         Validator::extend('hcaptcha', function ($attribute, $value, $parameters, $validator) {
-            $client = new \GuzzleHttp\Client();
-
-            $response = $client->post('https://hcaptcha.com/siteverify', [
-                'form_params' => [
-                    'secret' => config('services.hcaptcha.secret'),
-                    'response' => $value,
-                    'remoteip' => request()->ip()
-                ]
+            $response = Http::asForm()->post('https://hcaptcha.com/siteverify', [
+                'secret' => config('services.hcaptcha.secret'),
+                'response' => $value,
+                'remoteip' => request()->ip(),
             ]);
 
-            $body = json_decode((string)$response->getBody());
-            return $body->success;
-        }, 'Пожалуйста, подтвердите, что вы не робот.');
+            return $response->json()['success'] ?? false;
+        }, 'The hCaptcha verification failed.');
     }
 }
